@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "uView UI",
+  "usingComponents": {
+    "base-layout": "/components/BaseLayout"
+  }
+}
