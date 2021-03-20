@@ -5,6 +5,8 @@
 			<text class="title">{{title}}</text>
 		</view>
 	</BaseLayout>
+
+	
 </template>
 
 <script>
@@ -15,17 +17,13 @@
 		},
 		data() {
 			return {
-				title: '我的学习'
-			}
-		},
-		onLoad() {
-
+					title: '账户'
+			};
 		}
 	}
 </script>
 
-<style>
-
+<style lang="scss">
 	.logo {
 		height: 200rpx;
 		width: 200rpx;

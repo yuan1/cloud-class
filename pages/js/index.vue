@@ -15,8 +15,7 @@
 		},
 		data() {
 			return {
-				title: '工具',
-				tabbar: ''
+				title: '分类'
 			}
 		},
 		onLoad() {

@@ -3,7 +3,7 @@
 		<view class="content">
 			<slot></slot>
 		</view>
-		<u-tabbar :list="tabbar" :mid-button="true"></u-tabbar>
+		<u-tabbar :list="tabbar"></u-tabbar>
 	</view>
 </template>
 
@@ -13,25 +13,28 @@
 		data() {
 			return {
 				tabbar: [{
-						iconPath: "/static/uview/example/component.png",
-						selectedIconPath: "/static/uview/example/component_select.png",
+						iconPath: "home",
+						selectedIconPath: "home-fill",
 						text: '组件',
-						count: 2,
-						isDot: true,
 						pagePath: "/pages/index/index"
 					},
 					{
-						iconPath: "/static/uview/example/js.png",
-						selectedIconPath: "/static/uview/example/js_select.png",
-						text: '工具',
-						midButton: true,
+						iconPath: "grid",
+						selectedIconPath: "grid-fill",
+						text: '分类',
 						pagePath: "/pages/js/index"
 					},
 					{
-						iconPath: "/static/uview/example/template.png",
-						selectedIconPath: "/static/uview/example/template_select.png",
-						text: '模板',
+						iconPath: "coupon",
+						selectedIconPath: "coupon-fill",
+						text: '我的学习',
 						pagePath: "/pages/template/index"
+					},
+					{
+						iconPath: "account",
+						selectedIconPath: "account-fill",
+						text: '账户',
+						pagePath: "/pages/account/index"
 					},
 				]
 			};
