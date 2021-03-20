@@ -3,7 +3,7 @@
 		<view class="content">
 			<slot></slot>
 		</view>
-		<u-tabbar :list="tabbar" :icon-size="38"></u-tabbar>
+		<u-tabbar :list="tabbar"></u-tabbar>
 	</view>
 </template>
 
@@ -15,7 +15,7 @@
 				tabbar: [{
 						iconPath: "home",
 						selectedIconPath: "home-fill",
-						text: '组件',
+						text: '首页',
 						pagePath: "/pages/index/index"
 					},
 					{

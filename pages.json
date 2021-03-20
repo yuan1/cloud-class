@@ -25,13 +25,18 @@
 			"style": {
 				"navigationBarTitleText": "账户"
 			}
+		}, {
+			"path": "pages/index/detail",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
 
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "云课堂",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {
