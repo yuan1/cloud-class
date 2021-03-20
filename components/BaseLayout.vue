@@ -3,7 +3,7 @@
 		<view class="content">
 			<slot></slot>
 		</view>
-		<u-tabbar :list="tabbar"></u-tabbar>
+		<u-tabbar :list="tabbar" :icon-size="38"></u-tabbar>
 	</view>
 </template>
 

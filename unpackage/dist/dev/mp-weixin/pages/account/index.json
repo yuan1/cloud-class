@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "首页",
+  "navigationBarTitleText": "账户",
   "usingComponents": {
     "base-layout": "/components/BaseLayout"
   }

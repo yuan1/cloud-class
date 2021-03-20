@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "工具",
+  "navigationBarTitleText": "分类",
   "usingComponents": {
     "base-layout": "/components/BaseLayout"
   }

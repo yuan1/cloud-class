@@ -20,34 +20,29 @@
 			"style": {
 				"navigationBarTitleText": "我的学习"
 			}
+		}, {
+			"path": "pages/account/index",
+			"style": {
+				"navigationBarTitleText": "账户"
+			}
+
 		}
-	    ,{
-            "path" : "pages/account/index",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "账户"
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uView UI",
+		"navigationBarTitleText": "云课堂",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {
 		"list": [{
 				"pagePath": "pages/index/index"
-				
 			},
 			{
 				"pagePath": "pages/js/index"
-			
 			},
 			{
 				"pagePath": "pages/template/index"
-	
 			},
 			{
 				"pagePath": "pages/account/index"
