@@ -1,12 +1,10 @@
 <template>
 	<BaseLayout>
-		<image class="logo" src="/static/uview/common/logo.png"></image>
+	
 		<view class="text-area">
 			<text class="title">{{title}}</text>
 		</view>
 	</BaseLayout>
-
-	
 </template>
 
 <script>
@@ -17,21 +15,18 @@
 		},
 		data() {
 			return {
-					title: '账户'
+				title: '账户',
+				keyword: '',
+		
 			};
+		},
+		methods: {
+		
 		}
 	}
 </script>
 
 <style lang="scss">
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
 
 	.text-area {
 		display: flex;

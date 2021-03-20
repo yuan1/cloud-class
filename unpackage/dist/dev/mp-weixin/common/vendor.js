@@ -503,7 +503,7 @@ function processArgs(methodName, fromArgs) {var argsOption = arguments.length > 
           keyOption = keyOption(fromArgs[key], fromArgs, toArgs);
         }
         if (!keyOption) {// 不支持的参数
-          console.warn("\u5FAE\u4FE1\u5C0F\u7A0B\u5E8F ".concat(methodName, "\u6682\u4E0D\u652F\u6301").concat(key));
+          console.warn("The '".concat(methodName, "' method of platform '\u5FAE\u4FE1\u5C0F\u7A0B\u5E8F' does not support option '").concat(key, "'"));
         } else if (isStr(keyOption)) {// 重写参数 key
           toArgs[keyOption] = fromArgs[key];
         } else if (isPlainObject(keyOption)) {// {name:newName,value:value}可重新指定参数 key:value
@@ -538,7 +538,7 @@ function wrapper(methodName, method) {
     var protocol = protocols[methodName];
     if (!protocol) {// 暂不支持的 api
       return function () {
-        console.error("\u5FAE\u4FE1\u5C0F\u7A0B\u5E8F \u6682\u4E0D\u652F\u6301".concat(methodName));
+        console.error("Platform '\u5FAE\u4FE1\u5C0F\u7A0B\u5E8F' does not support '".concat(methodName, "'."));
       };
     }
     return function (arg1, arg2) {// 目前 api 最多两个参数
@@ -585,7 +585,7 @@ function createTodoApi(name) {
 
   {var fail = _ref.fail,complete = _ref.complete;
     var res = {
-      errMsg: "".concat(name, ":fail:\u6682\u4E0D\u652F\u6301 ").concat(name, " \u65B9\u6CD5") };
+      errMsg: "".concat(name, ":fail method '").concat(name, "' not supported") };
 
     isFn(fail) && fail(res);
     isFn(complete) && complete(res);
@@ -619,7 +619,7 @@ function getProvider(_ref2)
     isFn(success) && success(res);
   } else {
     res = {
-      errMsg: 'getProvider:fail:服务[' + service + ']不存在' };
+      errMsg: 'getProvider:fail service not found' };
 
     isFn(fail) && fail(res);
   }
@@ -822,7 +822,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"Tabbar","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"CloudClass","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1323,7 +1323,12 @@ function parseBaseApp(vm, _ref3)
 
       delete this.$options.mpType;
       delete this.$options.mpInstance;
-
+      if (this.mpType === 'page') {// hack vue-i18n
+        var app = getApp();
+        if (app.$vm && app.$vm.$i18n) {
+          this._i18n = app.$vm.$i18n;
+        }
+      }
       if (this.mpType !== 'app') {
         initRefs(this);
         initMocks(this, mocks);
@@ -7318,7 +7323,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"Tabbar","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"CloudClass","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7339,14 +7344,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"Tabbar","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"CloudClass","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"Tabbar","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"CloudClass","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7432,7 +7437,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"Tabbar","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"CloudClass","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7870,9 +7875,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!**********************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/pages.json ***!
-  \**********************************************************/
+/*!**********************************************!*\
+  !*** /Users/lyh/code/cloud-class/pages.json ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8013,9 +8018,9 @@ function normalizeComponent (
 
 /***/ }),
 /* 11 */
-/*!*****************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/index.js ***!
-  \*****************************************************************/
+/*!*****************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/index.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8164,9 +8169,9 @@ var install = function install(Vue) {
 
 /***/ }),
 /* 12 */
-/*!****************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/mixin/mixin.js ***!
-  \****************************************************************************/
+/*!****************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/mixin/mixin.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8223,9 +8228,9 @@ var install = function install(Vue) {
 
 /***/ }),
 /* 13 */
-/*!******************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/request/index.js ***!
-  \******************************************************************************/
+/*!******************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/request/index.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8403,9 +8408,9 @@ new Request();exports.default = _default;
 
 /***/ }),
 /* 14 */
-/*!***********************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/deepMerge.js ***!
-  \***********************************************************************************/
+/*!***********************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/deepMerge.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8443,9 +8448,9 @@ deepMerge;exports.default = _default;
 
 /***/ }),
 /* 15 */
-/*!***********************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/deepClone.js ***!
-  \***********************************************************************************/
+/*!***********************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/deepClone.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8476,9 +8481,9 @@ deepClone;exports.default = _default;
 
 /***/ }),
 /* 16 */
-/*!******************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/test.js ***!
-  \******************************************************************************/
+/*!******************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/test.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8717,9 +8722,9 @@ function code(value) {var len = arguments.length > 1 && arguments[1] !== undefin
 
 /***/ }),
 /* 17 */
-/*!*************************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/queryParams.js ***!
-  \*************************************************************************************/
+/*!*************************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/queryParams.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8785,17 +8790,17 @@ queryParams;exports.default = _default;
 
 /***/ }),
 /* 18 */
-/*!*******************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/route.js ***!
-  \*******************************************************************************/
+/*!*******************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/route.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  * 路由跳转方法，该方法相对于直接使用uni.xxx的好处是使用更加简单快捷
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  * 并且带有路由拦截功能
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  */var
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        * 路由跳转方法，该方法相对于直接使用uni.xxx的好处是使用更加简单快捷
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        * 并且带有路由拦截功能
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        */var
 
 Router = /*#__PURE__*/function () {
   function Router() {_classCallCheck(this, Router);
@@ -9705,9 +9710,9 @@ if (hadRuntime) {
 
 /***/ }),
 /* 22 */
-/*!************************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/timeFormat.js ***!
-  \************************************************************************************/
+/*!************************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/timeFormat.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9766,9 +9771,9 @@ timeFormat;exports.default = _default;
 
 /***/ }),
 /* 23 */
-/*!**********************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/timeFrom.js ***!
-  \**********************************************************************************/
+/*!**********************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/timeFrom.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9823,9 +9828,9 @@ timeFrom;exports.default = _default;
 
 /***/ }),
 /* 24 */
-/*!***************************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/colorGradient.js ***!
-  \***************************************************************************************/
+/*!***************************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/colorGradient.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9966,9 +9971,9 @@ function colorToRgba(color) {var alpha = arguments.length > 1 && arguments[1] !=
 
 /***/ }),
 /* 25 */
-/*!******************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/guid.js ***!
-  \******************************************************************************/
+/*!******************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/guid.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10017,9 +10022,9 @@ guid;exports.default = _default;
 
 /***/ }),
 /* 26 */
-/*!*******************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/color.js ***!
-  \*******************************************************************************/
+/*!*******************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/color.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10064,9 +10069,9 @@ color;exports.default = _default;
 
 /***/ }),
 /* 27 */
-/*!***********************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/type2icon.js ***!
-  \***********************************************************************************/
+/*!***********************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/type2icon.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10109,9 +10114,9 @@ type2icon;exports.default = _default;
 
 /***/ }),
 /* 28 */
-/*!*************************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/randomArray.js ***!
-  \*************************************************************************************/
+/*!*************************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/randomArray.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10126,9 +10131,9 @@ randomArray;exports.default = _default;
 
 /***/ }),
 /* 29 */
-/*!*********************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/addUnit.js ***!
-  \*********************************************************************************/
+/*!*********************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/addUnit.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10144,9 +10149,9 @@ function addUnit() {var value = arguments.length > 0 && arguments[0] !== undefin
 
 /***/ }),
 /* 30 */
-/*!********************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/random.js ***!
-  \********************************************************************************/
+/*!********************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/random.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10164,9 +10169,9 @@ random;exports.default = _default;
 
 /***/ }),
 /* 31 */
-/*!******************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/trim.js ***!
-  \******************************************************************************/
+/*!******************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/trim.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10189,9 +10194,9 @@ trim;exports.default = _default;
 
 /***/ }),
 /* 32 */
-/*!*******************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/toast.js ***!
-  \*******************************************************************************/
+/*!*******************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/toast.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10209,9 +10214,9 @@ toast;exports.default = _default;
 
 /***/ }),
 /* 33 */
-/*!***********************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/getParent.js ***!
-  \***********************************************************************************/
+/*!***********************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/getParent.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10266,9 +10271,9 @@ function getParent(name, keys) {
 
 /***/ }),
 /* 34 */
-/*!*********************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/$parent.js ***!
-  \*********************************************************************************/
+/*!*********************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/$parent.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10294,9 +10299,9 @@ function $parent() {var name = arguments.length > 0 && arguments[0] !== undefine
 
 /***/ }),
 /* 35 */
-/*!*****************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/sys.js ***!
-  \*****************************************************************************/
+/*!*****************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/sys.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10312,9 +10317,9 @@ function sys() {
 
 /***/ }),
 /* 36 */
-/*!**********************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/debounce.js ***!
-  \**********************************************************************************/
+/*!**********************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/debounce.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10351,9 +10356,9 @@ debounce;exports.default = _default;
 
 /***/ }),
 /* 37 */
-/*!**********************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/function/throttle.js ***!
-  \**********************************************************************************/
+/*!**********************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/function/throttle.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10393,9 +10398,9 @@ throttle;exports.default = _default;
 
 /***/ }),
 /* 38 */
-/*!******************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/config/config.js ***!
-  \******************************************************************************/
+/*!******************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/config/config.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10416,9 +10421,9 @@ var version = '1.8.0';var _default =
 
 /***/ }),
 /* 39 */
-/*!******************************************************************************!*\
-  !*** /Users/lmy/HBuilderProjects/cloud-class/uview-ui/libs/config/zIndex.js ***!
-  \******************************************************************************/
+/*!******************************************************************!*\
+  !*** /Users/lyh/code/cloud-class/uview-ui/libs/config/zIndex.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

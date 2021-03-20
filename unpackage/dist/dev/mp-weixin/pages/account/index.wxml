@@ -1,0 +1,1 @@
+<base-layout vue-id="7e07d9c2-1" bind:__l="__l" vue-slots="{{['default']}}"><view class="text-area"><text class="title">{{title}}</text></view></base-layout>

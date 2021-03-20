@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/js/index",
-    "pages/template/index"
+    "pages/template/index",
+    "pages/account/index"
   ],
   "subPackages": [],
   "window": {
@@ -12,31 +13,20 @@
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
-    "color": "#909399",
-    "selectedColor": "#303133",
-    "backgroundColor": "#FFFFFF",
-    "borderStyle": "black",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "iconPath": "static/uview/example/component.png",
-        "selectedIconPath": "static/uview/example/component_select.png",
-        "text": "组件"
+        "pagePath": "pages/index/index"
       },
       {
-        "pagePath": "pages/js/index",
-        "iconPath": "static/uview/example/js.png",
-        "selectedIconPath": "static/uview/example/js_select.png",
-        "text": "工具"
+        "pagePath": "pages/js/index"
       },
       {
-        "pagePath": "pages/template/index",
-        "iconPath": "static/uview/example/template.png",
-        "selectedIconPath": "static/uview/example/template_select.png",
-        "text": "模板"
+        "pagePath": "pages/template/index"
+      },
+      {
+        "pagePath": "pages/account/index"
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

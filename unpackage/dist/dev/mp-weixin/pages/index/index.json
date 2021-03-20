@@ -1,6 +1,13 @@
 {
-  "navigationBarTitleText": "uView UI",
+  "navigationBarTitleText": "首页",
   "usingComponents": {
+    "u-search": "/uview-ui/components/u-search/u-search",
+    "u-tabs": "/uview-ui/components/u-tabs/u-tabs",
+    "u-swiper": "/uview-ui/components/u-swiper/u-swiper",
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "u-cell-group": "/uview-ui/components/u-cell-group/u-cell-group",
+    "u-cell-item": "/uview-ui/components/u-cell-item/u-cell-item",
+    "u-image": "/uview-ui/components/u-image/u-image",
     "base-layout": "/components/BaseLayout"
   }
 }
