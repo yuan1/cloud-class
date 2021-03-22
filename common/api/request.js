@@ -1,4 +1,4 @@
-const server_url = process.env.NODE_ENV === 'development' ? 'http://192.168.2.172:9090' : 'http://***/api';; //请求地址
+const server_url = process.env.NODE_ENV === 'development' ? 'http://0.0.0.0:9090' : 'http://***/api';; //请求地址
 let token = ' '; //凭证
 function service(options = {}) {
 	options.url = `${server_url}${options.url}`;

@@ -12,3 +12,9 @@ export function getPostById(id) {
 		method: 'GET'
 	})
 }
+export function getComments() {
+	return request({
+		url: '/comments',
+		method: 'GET'
+	})
+}

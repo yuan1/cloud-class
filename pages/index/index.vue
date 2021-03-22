@@ -19,28 +19,44 @@
 			</view>
 			<u-gap height="16" bg-color="#f2f2f2"></u-gap>
 			<u-cell-group class="personality-list">
-				<u-cell-item v-for="(item,index) in personalityList.data" :key="index" :title="item.title" :label="item.desc" @click="openDetail(item.id)"
-					:arrow="false">
+				<u-cell-item v-for="(item,index) in personalityList.data" :key="index" :title="item.title"
+					:label="item.desc" @click="openDetail(item.id)" :arrow="false">
 					<u-image slot="right-icon" width="160rpx" height="160rpx" class="u-padding-16"
 						:src="item.thumbnail"></u-image>
 				</u-cell-item>
 				<u-loadmore :status="personalityList.status" class="u-padding-top-20 u-padding-bottom-20" />
 			</u-cell-group>
 		</scroll-view>
+		<view class="container u-flex u-padding-top-20 u-padding-bottom-20">
+			<u-icon name="level"></u-icon>
+			<u-section title="'前端'值得学的课" sub-title="更多" :show-line="false"></u-section>
+		</view>
+		<scroll-view scroll-x="true" class="personality-scroll">
+			<IndexCardList v-for="(card,index) in cardList" :key="card.id" 
+			class="u-margin-right-12"
+			:title="card.title" :count="card.count"
+				:value="card.value" :number="card.number" :price="card.price" :img="card.thumbnail">
+			</IndexCardList>
+		</scroll-view>
 	</BaseLayout>
 </template>
 
 <script>
 	import BaseLayout from "../../components/BaseLayout.vue"
+	import IndexCardList from "../../components/IndexCardList.vue"
 	import {
-		getPosts
+		getPosts,
+		getComments
 	} from "../../common/api/index.js";
 	export default {
 		components: {
-			BaseLayout
+			BaseLayout,
+			IndexCardList
 		},
 		data() {
 			return {
+				count: 5,
+				value: 2,
 				keyword: '',
 				tabsList: [{
 					name: '个性推荐'
@@ -67,16 +83,19 @@
 					status: 'loadmore',
 					page: 0,
 					data: []
-				}
+				},
+				cardList: []
 			}
 		},
 		onLoad() {
 			this.loadingPersonalityList();
+			this.loadingPersonalityCard();
 		},
 		onReachBottom() {
 			this.loadingPersonalityList();
 		},
 		methods: {
+
 			tabsChange(index) {
 				this.tabsCurrent = index;
 				if (index == 0) {
@@ -90,16 +109,22 @@
 				this.personalityList.status = 'loading';
 				this.personalityList.page++;
 				getPosts().then(data => {
-					this.personalityList.data=[
+					this.personalityList.data = [
 						...this.personalityList.data,
 						...data
 					];
 					if (this.personalityList.page >= 3) this.personalityList.status = 'nomore';
 				})
 			},
-			openDetail(id){
+			openDetail(id) {
 				uni.navigateTo({
-					url:"/pages/index/detail?id="+id
+					url: "/pages/index/detail?id=" + id
+				})
+			},
+			// 更多列表
+			loadingPersonalityCard() {
+				getComments().then(data => {
+					this.cardList = data
 				})
 			}
 		}
@@ -140,6 +165,16 @@
 
 		::v-deep .u-cell__label {
 			white-space: pre-wrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
 		}
+	}
+
+	.personality-scroll {
+		padding: 0 16rpx;
+		white-space: nowrap; //阻止文本换行
 	}
 </style>
