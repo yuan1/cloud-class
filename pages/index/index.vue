@@ -56,7 +56,8 @@
 			</view>
 			<view class="c-big">
 				<view class="personality-card u-padding-12">
-					<u-image src="http://img.ithome.com/specialnews/2020/11/20201110_115639_393.png" width="100%" height="368"></u-image>
+					<u-image src="http://img.ithome.com/specialnews/2020/11/20201110_115639_393.png" width="100%"
+						height="368"></u-image>
 					<text class="u-font-xs p-c-title">苹果2021春季新品发布会专题</text>
 					<view>
 						<u-rate :count="count" v-model="value" size="20" active-color="#42B983" disabled></u-rate>
@@ -64,6 +65,14 @@
 					</view>
 					<text class="p-c-price">$66.00</text>
 				</view>
+			</view>
+		</scroll-view>
+		<scroll-view v-if="tabsCurrent==2">
+			<view class="depart">
+				<text>跟随知名企业的一线资深工程师、设计师，</text>
+				<text>以及行业知名专家学习，</text>
+				<text>系统的掌握工作方法和技巧，获得全面的职业提升！</text>
+				<u-button type="primary" ripple-bg-color="#3684c6" size="medium">查看所有微专业 ></u-button>
 			</view>
 		</scroll-view>
 	</BaseLayout>
@@ -245,13 +254,33 @@
 	}
 
 	.course {
-		.course-card ::v-deep .personality-card{
+		.course-card ::v-deep .personality-card {
 			width: 50%;
 			margin-right: unset;
 		}
-		.c-big ::v-deep .personality-card{
+
+		.c-big ::v-deep .personality-card {
 			width: 100%;
 			margin-right: unset;
+		}
+	}
+	.depart{
+		width: 100%;
+		height: 780rpx;
+		padding: 240rpx 0;
+		background: url(https://goss.cfp.cn/static/home/h4_3.png);
+		background-size:100% 100%;
+		text {
+			color: #FFFFFF;
+			text-align: center;
+			display: block;
+			font-size: 24rpx;
+			margin-top: 12rpx;
+		}
+		::v-deep .u-size-medium{
+			width: 320rpx;
+			margin-top: 32rpx;
+			display:flex;
 		}
 	}
 </style>
