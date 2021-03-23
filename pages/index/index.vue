@@ -4,9 +4,11 @@
 		<u-tabs :list="tabsList" :is-scroll="false" :current="tabsCurrent" font-size="26" @change="tabsChange"
 			class="content">
 		</u-tabs>
-		<scroll-view class="personality" v-if="tabsCurrent==0">
-			<u-swiper class="personality-swiper" height="360" border-radius="0" :list="personalitySwiperList">
+		<scroll-view v-if="tabsCurrent==0 ||tabsCurrent==1">
+			<u-swiper height="360" border-radius="0" :list="personalitySwiperList">
 			</u-swiper>
+		</scroll-view>
+		<scroll-view class="personality" v-if="tabsCurrent==0">
 			<view class="personality-hot">
 				<view class="p-h-title">
 					<u-icon name="gift" size="30" color="#ff0000"></u-icon>
@@ -24,19 +26,45 @@
 					<u-image slot="right-icon" width="160rpx" height="160rpx" class="u-padding-16"
 						:src="item.thumbnail"></u-image>
 				</u-cell-item>
-				<u-loadmore :status="personalityList.status" class="u-padding-top-20 u-padding-bottom-20" />
+				<view class="p-l-more" @click="openMoreList()">查看更多</view>
 			</u-cell-group>
+			<u-cell-group class="content" :border="false">
+				<u-cell-item icon="integral-fill" title="'前端'值得学的课" :arrow="true" value="更多"></u-cell-item>
+			</u-cell-group>
+			<scroll-view scroll-x="true" class="personality-learn">
+				<IndexCardList v-for="(card,index) in cardList" :key="card.id" class="u-margin-right-12"
+					:title="card.title" :count="card.count" :value="card.value" :number="card.number"
+					:price="card.price" :img="card.thumbnail">
+				</IndexCardList>
+				<u-gap height="24" bg-color="#f2f2f2"></u-gap>
+			</scroll-view>
+			<view class="personality-pop">
+				<u-image width="100%" height="380rpx" src="https://cdn.uviewui.com/uview/swiper/1.jpg"
+					:lazy-load="true">
+				</u-image>
+				<text class="p-p-title">春季新品发布会专题春季新品发布会专题春季新品发布会专题</text>
+				<text class="p-p-author">汤小元 共54个学时</text>
+				<text class="p-p-info">分别从字体、构图和技法三方面完整介绍手绘POP插画的绘制方法。</text>
+			</view>
 		</scroll-view>
-		<view class="container u-flex u-padding-top-20 u-padding-bottom-20">
-			<u-icon name="level"></u-icon>
-			<u-section title="'前端'值得学的课" sub-title="更多" :show-line="false"></u-section>
-		</view>
-		<scroll-view scroll-x="true" class="personality-scroll">
-			<IndexCardList v-for="(card,index) in cardList" :key="card.id" 
-			class="u-margin-right-12"
-			:title="card.title" :count="card.count"
-				:value="card.value" :number="card.number" :price="card.price" :img="card.thumbnail">
-			</IndexCardList>
+		<scroll-view class="course" v-if="tabsCurrent==1">
+			<view class="u-padding-24">精选好课</view>
+			<view class="course-card">
+				<IndexCardList v-for="(cou,index) in coursesList" :key="cou.id" :title="cou.title" :count="cou.count"
+					:value="cou.value" :number="cou.number" :price="cou.price" :img="cou.thumbnail">
+				</IndexCardList>
+			</view>
+			<view class="c-big">
+				<view class="personality-card u-padding-12">
+					<u-image src="http://img.ithome.com/specialnews/2020/11/20201110_115639_393.png" width="100%" height="368"></u-image>
+					<text class="u-font-xs p-c-title">苹果2021春季新品发布会专题</text>
+					<view>
+						<u-rate :count="count" v-model="value" size="20" active-color="#42B983" disabled></u-rate>
+						<text class="u-font-xs u-margin-left-12">1024人学过</text>
+					</view>
+					<text class="p-c-price">$66.00</text>
+				</view>
+			</view>
 		</scroll-view>
 	</BaseLayout>
 </template>
@@ -46,7 +74,8 @@
 	import IndexCardList from "../../components/IndexCardList.vue"
 	import {
 		getPosts,
-		getComments
+		getComments,
+		getCourses
 	} from "../../common/api/index.js";
 	export default {
 		components: {
@@ -56,7 +85,7 @@
 		data() {
 			return {
 				count: 5,
-				value: 2,
+				value: 3,
 				keyword: '',
 				tabsList: [{
 					name: '个性推荐'
@@ -80,11 +109,10 @@
 					}
 				],
 				personalityList: {
-					status: 'loadmore',
-					page: 0,
 					data: []
 				},
-				cardList: []
+				cardList: [],
+				coursesList: []
 			}
 		},
 		onLoad() {
@@ -101,19 +129,25 @@
 				if (index == 0) {
 					this.loadingPersonalityList();
 				}
+				if (index == 1) {
+					this.loadingCoursesList();
+				}
 			},
 			loadingPersonalityList() {
-				if (this.personalityList.page >= 3) {
-					return;
-				};
-				this.personalityList.status = 'loading';
-				this.personalityList.page++;
 				getPosts().then(data => {
-					this.personalityList.data = [
-						...this.personalityList.data,
-						...data
-					];
-					if (this.personalityList.page >= 3) this.personalityList.status = 'nomore';
+					this.personalityList.data = data
+
+				})
+			},
+			loadingCoursesList() {
+				getCourses().then(data => {
+					console.log(data)
+					this.coursesList = data
+				})
+			},
+			openMoreList() {
+				uni.navigateTo({
+					url: "/pages/index/list"
 				})
 			},
 			openDetail(id) {
@@ -171,10 +205,53 @@
 			-webkit-line-clamp: 3;
 			-webkit-box-orient: vertical;
 		}
+
+		.p-l-more {
+			font-size: 24rpx;
+			color: #2B85E4;
+			padding: 16rpx 0;
+			text-align: center;
+		}
 	}
 
-	.personality-scroll {
+	.personality-learn {
 		padding: 0 16rpx;
 		white-space: nowrap; //阻止文本换行
+		background: #f2f2f2;
+	}
+
+	.personality-pop {
+		padding: 16rpx;
+
+		text {
+			display: block;
+			margin-top: 20rpx;
+		}
+
+		.p-p-title {
+			font-size: 28rpx;
+			color: #606266;
+		}
+
+		.p-p-author {
+			font-size: 24rpx;
+			color: #656565;
+		}
+
+		.p-p-info {
+			font-size: 24rpx;
+			color: #656565;
+		}
+	}
+
+	.course {
+		.course-card ::v-deep .personality-card{
+			width: 50%;
+			margin-right: unset;
+		}
+		.c-big ::v-deep .personality-card{
+			width: 100%;
+			margin-right: unset;
+		}
 	}
 </style>

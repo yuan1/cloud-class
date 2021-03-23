@@ -31,6 +31,12 @@
 				"navigationBarTitleText": "详情"
 			}
 
+		}, {
+			"path": "pages/index/list",
+			"style": {
+				"navigationBarTitleText": "列表"
+			}
+
 		}
 	],
 	"globalStyle": {

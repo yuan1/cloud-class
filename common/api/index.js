@@ -18,3 +18,9 @@ export function getComments() {
 		method: 'GET'
 	})
 }
+export function getCourses() {
+	return request({
+		url: '/courses',
+		method: 'GET'
+	})
+}

@@ -56,6 +56,43 @@
 			"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541148_240.jpg"
 		}
 	],
+	"courses": [{
+			"id": 14,
+			"count": 5,
+			"value": 4,
+			"number": "1030人学过",
+			"price": 109.00,
+			"title": "沃兹尼亚克：苹果的成功没改变我的价值观，动机比技能更重要",
+			"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541148_240.jpg"
+		},
+		{
+			"id": 13,
+			"count": 5,
+			"value": 2,
+			"number": "1026人学过",
+			"price": 66.00,
+			"title": "苹果2021春季新品发布会专题",
+			"thumbnail": "http://img.ithome.com/specialnews/2020/11/20201110_115639_393.png"
+		},
+		{
+			"id": 12,
+			"count": 5,
+			"value": 3,
+			"number": "1028人学过",
+			"price": 88.00,
+			"title": "阿里云盘正式公测：“无论免费收费，未来都不限速”",
+			"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541361_240.jpg"
+		},
+		{
+			"id": 11,
+			"count": 5,
+			"value": 4,
+			"number": "1026人学过",
+			"price": 66.00,
+			"title": "上汽零束SOA平台开发者大会",
+			"thumbnail": "http://img.ithome.com/specialnews/2021/3/20210315_183118_972.png"
+		}
+	],
 	"profile": {
 		"name": "typicode"
 	}
