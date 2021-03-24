@@ -57,10 +57,6 @@
 		background: #ffffff;
 		margin-right: 12rpx;
 
-		&:last-child {
-			margin-right: unset;
-		}
-
 		.p-c-title {
 			height: 64rpx;
 			margin-top: 12rpx;

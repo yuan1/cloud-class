@@ -32,7 +32,7 @@
 				<u-cell-item icon="integral-fill" title="'前端'值得学的课" :arrow="true" value="更多"></u-cell-item>
 			</u-cell-group>
 			<scroll-view scroll-x="true" class="personality-learn">
-				<IndexCardList v-for="(card,index) in cardList" :key="card.id" class="u-margin-right-12"
+				<IndexCardList v-for="(card,index) in cardList" :key="card.id"
 					:title="card.title" :count="card.count" :value="card.value" :number="card.number"
 					:price="card.price" :img="card.thumbnail">
 				</IndexCardList>
@@ -73,6 +73,41 @@
 				<text>以及行业知名专家学习，</text>
 				<text>系统的掌握工作方法和技巧，获得全面的职业提升！</text>
 				<u-button type="primary" ripple-bg-color="#3684c6" size="medium">查看所有微专业 ></u-button>
+			</view>
+			<view class="u-flex u-row-between u-padding-16">
+				<view style="width: 49%;">
+					<video style="width: 100%; height: 220rpx"
+						src="https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/%E7%AC%AC1%E8%AE%B2%EF%BC%88uni-app%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D%EF%BC%89-%20DCloud%E5%AE%98%E6%96%B9%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B@20200317.mp4"></video>
+					<view class="truncate u-font-xs">深度学习工程师微专业</view>
+				</view>
+				<view style="width: 49%;">
+					<video style="width: 100%; height: 220rpx;"
+						src="https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/%E7%AC%AC1%E8%AE%B2%EF%BC%88uni-app%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D%EF%BC%89-%20DCloud%E5%AE%98%E6%96%B9%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B@20200317.mp4"></video>
+					<view class="truncate u-font-xs">地产数据分析师</view>
+				</view>
+			</view>
+			<view>
+				<view class="u-text-center">微专业导师简介</view>
+				<view class="depart-author">
+					<view class="d-a-card u-flex u-flex-col u-row-center">
+						<u-avatar src="/static/uview/common/logo.png"></u-avatar>
+						<text>吴恩达 Andrew Ng</text>
+						<text>deeplearning.ai 创始人</text>
+						<u-avatar src="/static/uview/common/logo.png"></u-avatar>
+					</view>
+					<view class="d-a-card u-flex u-flex-col u-row-center">
+						<u-avatar src="/static/uview/common/logo.png"></u-avatar>
+						<text>吴恩达 Andrew Ng</text>
+						<text>deeplearning.ai 创始人</text>
+						<u-avatar src="/static/uview/common/logo.png"></u-avatar>
+					</view>
+					<view class="d-a-card u-flex u-flex-col u-row-center">
+						<u-avatar src="/static/uview/common/logo.png"></u-avatar>
+						<text>吴恩达 Andrew Ng</text>
+						<text>deeplearning.ai 创始人</text>
+						<u-avatar src="/static/uview/common/logo.png"></u-avatar>
+					</view>
+				</view>
 			</view>
 		</scroll-view>
 	</BaseLayout>
@@ -225,7 +260,7 @@
 	}
 
 	.personality-learn {
-		padding: 0 16rpx;
+		// padding: 0 16rpx;
 		white-space: nowrap; //阻止文本换行
 		background: #f2f2f2;
 	}
@@ -285,6 +320,26 @@
 			width: 320rpx;
 			margin-top: 32rpx;
 			display: flex;
+		}
+	}
+
+	.depart-author {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		.d-a-card {
+			width: 49%;
+			display: flex;
+			flex-wrap: wrap;
+			padding: 32rpx 0;
+			margin-top: 12rpx;
+			height: fit-content;
+			background: #f2f2f2;
+
+			text {
+				margin-top: 12rpx;
+			}
 		}
 	}
 </style>
