@@ -3,7 +3,7 @@
 		<u-image :src="img" width="100%" height="148"></u-image>
 		<text class="u-font-xs p-c-title">{{title}}</text>
 		<view class="u-flex u-row-between">
-			<u-rate :count="count" v-model="value" size="20" active-color="#42B983" disabled></u-rate>
+			<u-rate :count="count" :value="value" size="20" active-color="#42B983" disabled></u-rate>
 			<text class="u-font-xs">{{number}}</text>
 		</view>
 		<text class="p-c-price">${{price}}</text>

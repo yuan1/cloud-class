@@ -1,14 +1,12 @@
 <template>
-	<scroll-view>
 	<u-cell-group class="personality-list">
 		<u-cell-item v-for="(item,index) in personalityList.data" :key="index" :title="item.title" :label="item.desc"
 			@click="openDetail(item.id)" :arrow="false">
 			<u-image slot="right-icon" width="160rpx" height="160rpx" class="u-padding-16" :src="item.thumbnail">
 			</u-image>
 		</u-cell-item>
-		<u-loadmore :status="personalityList.status" class="u-padding-top-20 u-padding-bottom-20" />
+		<u-loadmore :status="personalityList.status" />
 	</u-cell-group>
-	</scroll-view>
 </template>
 
 <script>
@@ -70,6 +68,10 @@
 			display: -webkit-box;
 			-webkit-line-clamp: 3;
 			-webkit-box-orient: vertical;
+		}
+
+		::v-deep .u-load-more-wrap {
+			padding: 20rpx 0;
 		}
 
 		.p-l-more {

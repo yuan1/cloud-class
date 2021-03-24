@@ -145,12 +145,13 @@
 			loadingPersonalityList() {
 				getPosts().then(data => {
 					this.personalityList.data = data
-
+					if (this.personalityList.data.length > 4) {
+						this.personalityList.data = this.personalityList.data.slice(0, 3)
+					}
 				})
 			},
 			loadingCoursesList() {
 				getCourses().then(data => {
-					console.log(data)
 					this.coursesList = data
 				})
 			},
@@ -264,12 +265,14 @@
 			margin-right: unset;
 		}
 	}
-	.depart{
+
+	.depart {
 		width: 100%;
 		height: 780rpx;
 		padding: 240rpx 0;
 		background: url(https://goss.cfp.cn/static/home/h4_3.png);
-		background-size:100% 100%;
+		background-size: 100% 100%;
+
 		text {
 			color: #FFFFFF;
 			text-align: center;
@@ -277,10 +280,11 @@
 			font-size: 24rpx;
 			margin-top: 12rpx;
 		}
-		::v-deep .u-size-medium{
+
+		::v-deep .u-size-medium {
 			width: 320rpx;
 			margin-top: 32rpx;
-			display:flex;
+			display: flex;
 		}
 	}
 </style>
