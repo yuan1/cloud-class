@@ -32,10 +32,10 @@
 				<u-cell-item icon="integral-fill" title="'前端'值得学的课" :arrow="true" value="更多"></u-cell-item>
 			</u-cell-group>
 			<scroll-view scroll-x="true" class="personality-learn">
-				<IndexCardList v-for="(card,index) in cardList" :key="card.id"
-					:title="card.title" :count="card.count" :value="card.value" :number="card.number"
-					:price="card.price" :img="card.thumbnail">
-				</IndexCardList>
+				<IndexCard v-for="(card,index) in cardList" :key="card.id" :title="card.title" :count="card.count"
+					:value="card.value" :number="card.number" :price="card.price" :img="card.thumbnail">
+				</IndexCard>
+				</view>
 				<u-gap height="24" bg-color="#f2f2f2"></u-gap>
 			</scroll-view>
 			<view class="personality-pop">
@@ -49,22 +49,18 @@
 		</scroll-view>
 		<scroll-view class="course" v-if="tabsCurrent==1">
 			<view class="u-padding-24">精选好课</view>
-			<view class="course-card">
-				<IndexCardList v-for="(cou,index) in coursesList" :key="cou.id" :title="cou.title" :count="cou.count"
-					:value="cou.value" :number="cou.number" :price="cou.price" :img="cou.thumbnail">
-				</IndexCardList>
-			</view>
-			<view class="c-big">
-				<view class="personality-card u-padding-12">
-					<u-image src="http://img.ithome.com/specialnews/2020/11/20201110_115639_393.png" width="100%"
-						height="368"></u-image>
-					<text class="u-font-xs p-c-title">苹果2021春季新品发布会专题</text>
-					<view>
-						<u-rate :count="count" v-model="value" size="20" active-color="#42B983" disabled></u-rate>
-						<text class="u-font-xs u-margin-left-12">1024人学过</text>
-					</view>
-					<text class="p-c-price">$66.00</text>
+			<IndexCard v-for="(cou,index) in coursesList" :key="cou.id" :title="cou.title" :count="cou.count"
+				:value="cou.value" :number="cou.number" :price="cou.price" :img="cou.thumbnail" class="course-card">
+			</IndexCard>
+			<view class="c-big u-padding-12">
+				<u-image src="http://img.ithome.com/specialnews/2020/11/20201110_115639_393.png" width="100%"
+					height="368"></u-image>
+				<text class="u-font-xs p-c-title">苹果2021春季新品发布会专题</text>
+				<view>
+					<u-rate :count="count" v-model="value" size="20" active-color="#42B983" disabled></u-rate>
+					<text class="u-font-xs u-margin-left-12">1024人学过</text>
 				</view>
+				<text class="p-c-price">$66.00</text>
 			</view>
 		</scroll-view>
 		<scroll-view v-if="tabsCurrent==2">
@@ -74,7 +70,7 @@
 				<text>系统的掌握工作方法和技巧，获得全面的职业提升！</text>
 				<u-button type="primary" ripple-bg-color="#3684c6" size="medium">查看所有微专业 ></u-button>
 			</view>
-			<view class="u-flex u-row-between u-padding-16">
+			<view class="depart-video">
 				<view style="width: 49%;">
 					<video style="width: 100%; height: 220rpx"
 						src="https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/%E7%AC%AC1%E8%AE%B2%EF%BC%88uni-app%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D%EF%BC%89-%20DCloud%E5%AE%98%E6%96%B9%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B@20200317.mp4"></video>
@@ -86,45 +82,30 @@
 					<view class="truncate u-font-xs">地产数据分析师</view>
 				</view>
 			</view>
-			<view>
-				<view class="u-text-center">微专业导师简介</view>
-				<view class="depart-author">
-					<view class="d-a-card u-flex u-flex-col u-row-center">
-						<u-avatar src="/static/uview/common/logo.png"></u-avatar>
-						<text>吴恩达 Andrew Ng</text>
-						<text>deeplearning.ai 创始人</text>
-						<u-avatar src="/static/uview/common/logo.png"></u-avatar>
-					</view>
-					<view class="d-a-card u-flex u-flex-col u-row-center">
-						<u-avatar src="/static/uview/common/logo.png"></u-avatar>
-						<text>吴恩达 Andrew Ng</text>
-						<text>deeplearning.ai 创始人</text>
-						<u-avatar src="/static/uview/common/logo.png"></u-avatar>
-					</view>
-					<view class="d-a-card u-flex u-flex-col u-row-center">
-						<u-avatar src="/static/uview/common/logo.png"></u-avatar>
-						<text>吴恩达 Andrew Ng</text>
-						<text>deeplearning.ai 创始人</text>
-						<u-avatar src="/static/uview/common/logo.png"></u-avatar>
-					</view>
-				</view>
+			<view class="u-text-center u-padding-top-28">微专业导师简介</view>
+			<view class="depart-author">
+				<DepartCard v-for="(pe,index) in departsList" :key="pe.id" :avatar="pe.avatar" :author="pe.author"
+					:info="pe.info" :img="pe.thumbnail" class="d-a-card" />
+				</DepartCard>
 			</view>
 		</scroll-view>
 	</BaseLayout>
-</template>
+</template>s
 
 <script>
 	import BaseLayout from "../../components/BaseLayout.vue"
-	import IndexCardList from "../../components/IndexCardList.vue"
+	import IndexCard from "../../components/IndexCard.vue"
+	import DepartCard from "../../components/DepartCard.vue"
 	import {
 		getPosts,
 		getComments,
-		getCourses
+		getDeparts
 	} from "../../common/api/index.js";
 	export default {
 		components: {
 			BaseLayout,
-			IndexCardList
+			IndexCard,
+			DepartCard
 		},
 		data() {
 			return {
@@ -153,10 +134,13 @@
 					}
 				],
 				personalityList: {
-					data: []
+					data: [],
+					page: 0,
+					size: 3
 				},
 				cardList: [],
-				coursesList: []
+				coursesList: [],
+				departsList: []
 			}
 		},
 		onLoad() {
@@ -176,13 +160,16 @@
 				if (index == 1) {
 					this.loadingCoursesList();
 				}
+				if (index == 2) {
+					this.loadingDepartsList();
+				}
 			},
 			loadingPersonalityList() {
-				getPosts().then(data => {
+				getPosts({
+					"_page": this.personalityList.page,
+					"_limit": this.personalityList.size,
+				}).then(data => {
 					this.personalityList.data = data
-					if (this.personalityList.data.length > 4) {
-						this.personalityList.data = this.personalityList.data.slice(0, 3)
-					}
 				})
 			},
 			loadingCoursesList() {
@@ -190,6 +177,12 @@
 					this.coursesList = data
 				})
 			},
+			loadingDepartsList() {
+				getDeparts().then(data => {
+					this.departsList = data
+				})
+			},
+
 			openMoreList() {
 				uni.navigateTo({
 					url: "/pages/index/list"
@@ -260,10 +253,15 @@
 	}
 
 	.personality-learn {
-		// padding: 0 16rpx;
 		white-space: nowrap; //阻止文本换行
 		background: #f2f2f2;
+
+		::v-deep .personality-card {
+			width: 316rpx;
+			margin-right: 12rpx;
+		}
 	}
+
 
 	.personality-pop {
 		padding: 16rpx;
@@ -290,12 +288,12 @@
 	}
 
 	.course {
-		.course-card ::v-deep .personality-card {
+		.course-card {
 			width: 50%;
 			margin-right: unset;
 		}
 
-		.c-big ::v-deep .personality-card {
+		.c-big {
 			width: 100%;
 			margin-right: unset;
 		}
@@ -323,22 +321,27 @@
 		}
 	}
 
+	.depart-video {
+		display: flex;
+		justify-content: space-between;
+		padding: 16rpx 16rpx 48rpx;
+		background: #f2f2f2;
+	}
+
 	.depart-author {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
 
 		.d-a-card {
-			width: 49%;
-			display: flex;
-			flex-wrap: wrap;
+			width: calc(50% - 1px);
+			height: 364rpx;
 			padding: 32rpx 0;
 			margin-top: 12rpx;
-			height: fit-content;
-			background: #f2f2f2;
+			border-right: 1px solid #f2f2f2;
 
-			text {
-				margin-top: 12rpx;
+			&:nth-child(2n) {
+				border: unset;
 			}
 		}
 	}

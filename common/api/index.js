@@ -1,9 +1,10 @@
 import request from './request.js';
 
-export function getPosts() {
+export function getPosts(data) {
 	return request({
 		url: '/posts',
-		method: 'GET'
+		method: 'GET',
+		data
 	})
 }
 export function getPostById(id) {
@@ -21,6 +22,12 @@ export function getComments() {
 export function getCourses() {
 	return request({
 		url: '/courses',
+		method: 'GET'
+	})
+}
+export function getDeparts() {
+	return request({
+		url: '/departs',
 		method: 'GET'
 	})
 }

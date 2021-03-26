@@ -1,46 +1,47 @@
 {
 	"posts": [{
-		"id": 1,
-		"title": "《上古卷轴：刀锋》手游下周国服上线，《天际》原班人马打造",
-		"desc": " 《上古卷轴：刀锋》国服将于下周一公测。这款游戏由 Bethesda 游戏工作室《上古卷轴 5：天际》原班人马打造，为手游玩家量身定制，第一人称角色扮演",
-		"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541204_240.jpg"
-	}, {
-		"id": 2,
-		"title": "微软 Surface Duo 已支持 XGP 双屏游玩：下方显示按键，神似任天堂 DS",
-		"desc": " 微软 Surface Duo 已支持 XGP 双屏游玩：下方显示按键，神似任天堂 DS",
-		"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541203_240.jpg"
-	}, {
-		"id": 3,
-		"title": "曝尼康即将发布入门级 APS-C 画幅微单 Z30，还有 4 款 Z 卡口镜头",
-		"desc": " 曝尼康即将发布入门级 APS-C 画幅微单 Z30，还有 4 款 Z 卡口镜头",
-		"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541201_240.jpg"
-	}, {
-		"id": 4,
-		"title": "游戏《漫威复仇者联盟》2021 年更新路线公布：不包括蜘蛛侠，次世代主机版已发售",
-		"desc": " 游戏《漫威复仇者联盟》2021 年更新路线公布：不包括蜘蛛侠，次世代主机版已发售",
-		"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541199_240.jpg"
-	},
-	{
-		"id": 5,
-		"title": "《上古卷轴：刀锋》手游下周国服上线，《天际》原班人马打造",
-		"desc": " 《上古卷轴：刀锋》国服将于下周一公测。这款游戏由 Bethesda 游戏工作室《上古卷轴 5：天际》原班人马打造，为手游玩家量身定制，第一人称角色扮演",
-		"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541204_240.jpg"
-	}, {
-		"id": 6,
-		"title": "微软 Surface Duo 已支持 XGP 双屏游玩：下方显示按键，神似任天堂 DS",
-		"desc": " 微软 Surface Duo 已支持 XGP 双屏游玩：下方显示按键，神似任天堂 DS",
-		"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541203_240.jpg"
-	}, {
-		"id": 7,
-		"title": "曝尼康即将发布入门级 APS-C 画幅微单 Z30，还有 4 款 Z 卡口镜头",
-		"desc": " 曝尼康即将发布入门级 APS-C 画幅微单 Z30，还有 4 款 Z 卡口镜头",
-		"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541201_240.jpg"
-	}, {
-		"id": 8,
-		"title": "游戏《漫威复仇者联盟》2021 年更新路线公布：不包括蜘蛛侠，次世代主机版已发售",
-		"desc": " 游戏《漫威复仇者联盟》2021 年更新路线公布：不包括蜘蛛侠，次世代主机版已发售",
-		"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541199_240.jpg"
-	}],
+			"id": 1,
+			"title": "《上古卷轴：刀锋》手游下周国服上线，《天际》原班人马打造",
+			"desc": " 《上古卷轴：刀锋》国服将于下周一公测。这款游戏由 Bethesda 游戏工作室《上古卷轴 5：天际》原班人马打造，为手游玩家量身定制，第一人称角色扮演",
+			"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541204_240.jpg"
+		}, {
+			"id": 2,
+			"title": "微软 Surface Duo 已支持 XGP 双屏游玩：下方显示按键，神似任天堂 DS",
+			"desc": " 微软 Surface Duo 已支持 XGP 双屏游玩：下方显示按键，神似任天堂 DS",
+			"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541203_240.jpg"
+		}, {
+			"id": 3,
+			"title": "曝尼康即将发布入门级 APS-C 画幅微单 Z30，还有 4 款 Z 卡口镜头",
+			"desc": " 曝尼康即将发布入门级 APS-C 画幅微单 Z30，还有 4 款 Z 卡口镜头",
+			"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541201_240.jpg"
+		}, {
+			"id": 4,
+			"title": "游戏《漫威复仇者联盟》2021 年更新路线公布：不包括蜘蛛侠，次世代主机版已发售",
+			"desc": " 游戏《漫威复仇者联盟》2021 年更新路线公布：不包括蜘蛛侠，次世代主机版已发售",
+			"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541199_240.jpg"
+		},
+		{
+			"id": 5,
+			"title": "《上古卷轴：刀锋》手游下周国服上线，《天际》原班人马打造",
+			"desc": " 《上古卷轴：刀锋》国服将于下周一公测。这款游戏由 Bethesda 游戏工作室《上古卷轴 5：天际》原班人马打造，为手游玩家量身定制，第一人称角色扮演",
+			"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541204_240.jpg"
+		}, {
+			"id": 6,
+			"title": "微软 Surface Duo 已支持 XGP 双屏游玩：下方显示按键，神似任天堂 DS",
+			"desc": " 微软 Surface Duo 已支持 XGP 双屏游玩：下方显示按键，神似任天堂 DS",
+			"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541203_240.jpg"
+		}, {
+			"id": 7,
+			"title": "曝尼康即将发布入门级 APS-C 画幅微单 Z30，还有 4 款 Z 卡口镜头",
+			"desc": " 曝尼康即将发布入门级 APS-C 画幅微单 Z30，还有 4 款 Z 卡口镜头",
+			"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541201_240.jpg"
+		}, {
+			"id": 8,
+			"title": "游戏《漫威复仇者联盟》2021 年更新路线公布：不包括蜘蛛侠，次世代主机版已发售",
+			"desc": " 游戏《漫威复仇者联盟》2021 年更新路线公布：不包括蜘蛛侠，次世代主机版已发售",
+			"thumbnail": "https://img.ithome.com/newsuploadfiles/thumbnail/2021/3/541199_240.jpg"
+		}
+	],
 	"comments": [{
 			"id": 1,
 			"count": 5,
@@ -112,6 +113,28 @@
 			"price": 66.00,
 			"title": "上汽零束SOA平台开发者大会",
 			"thumbnail": "http://img.ithome.com/specialnews/2021/3/20210315_183118_972.png"
+		}
+	],
+	"departs": [{
+			"id": 1,
+			"author": "吴恩达 Andrew Ng",
+			"info": "1deeplearning.ai 创始人1",
+			"avatar": "http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg",
+			"thumbnail": "http://img.ithome.com/specialnews/2020/11/20201110_115639_393.png"
+		},
+		{
+			"id": 2,
+			"author": "吴恩达 Andrew Ng",
+			"info": "1deeplearning.ai 创始人2",
+			"avatar": "http://img.ithome.com/specialnews/2020/11/20201110_115639_393.png",
+			"thumbnail": "http://img.ithome.com/specialnews/2020/11/20201110_115639_393.png"
+		},
+		{
+			"id": 3,
+			"author": "吴恩达 Andrew Ng",
+			"info": "1deeplearning.ai 创始人3",
+			"avatar": "http://img.ithome.com/specialnews/2020/11/20201110_115639_393.png",
+			"thumbnail": "http://img.ithome.com/specialnews/2020/11/20201110_115639_393.png"
 		}
 	],
 	"profile": {

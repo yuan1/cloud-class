@@ -12,7 +12,7 @@
 
 <script>
 	export default {
-		name: "IndexCardList",
+		name: "IndexCard",
 		props: {
 			title: {
 				type: String,
@@ -43,7 +43,7 @@
 		},
 		data() {
 			return {
-				
+
 			};
 		}
 	}
@@ -52,10 +52,9 @@
 <style lang="scss">
 	.personality-card {
 		display: inline-block;
-		width: 316rpx;
+		width: 100%;
 		height: fit-content;
 		background: #ffffff;
-		margin-right: 12rpx;
 
 		.p-c-title {
 			height: 64rpx;
